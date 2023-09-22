@@ -1,0 +1,85 @@
+<head>
+<title>RDM 6</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body BGCOLOR="#FFFFFF">
+
+<br>
+<p align="center"><font color="#FF0000" size="6"><strong>Mod&eacute;lisation des 
+  ossatures</strong></font></p>
+
+<p><i>Dernière mise à jour : 30 avril 2008</i></p>
+
+<hr>
+
+<p>Consid&eacute;rons la structure plane suivante :</p>
+<p align="center"><IMG SRC="modelisation.gif" WIDTH=530 HEIGHT=262></p>
+
+<p><font color="#FF0000" size="5"><strong>N&#339;uds :</strong></font></p>
+<p>Un n&#339;ud peut &ecirc;tre :</p>
+<ul>
+  <li> Le point de jonction de plusieurs poutres (2, 5).</li>
+  <li> L'extr&eacute;mit&eacute; d'une poutre (8).</li>
+  <li> Un point correspondant &agrave; un changement de section droite (9).</li>
+  <li> Le point d'application d'une charge ponctuelle (9).</li>
+  <li> Un point d'appui (1, 3, 4, 7).</li>
+  <li> L'origine ou l'extr&eacute;mit&eacute; d'une charge r&eacute;partie 
+    (6).</li>
+</ul>
+<p> Les n&#339;uds sont d&eacute;finis par leurs coordonn&eacute;es dans un rep&egrave;re 
+  {O , x y z } appel&eacute; <strong><font color="#008040">rep&egrave;re global</font></strong>.</p>
+<p> On appelle <font color="#008040"><strong>nombre de degr&eacute;s de libert&eacute; 
+  d'un n&#339;ud</strong></font> le nombre de param&egrave;tres n&eacute;cessaires 
+  pour d&eacute;finir le d&eacute;placement du n&#339;ud.</p>
+
+<p><font color="#FF0000" size="5"><strong>Poutres :</strong></font></p>
+<p>Une poutre est un morceau de structure limit&eacute; par deux n&#339;uds. Une 
+  poutre sera caract&eacute;ris&eacute;e par ses n&#339;uds extr&eacute;mit&eacute;s.</p>
+<p>Sur notre exemple, il y a 8 poutres : (1-2) , (2-6) , (6-5) , (5-7) , (7-8) 
+  , (5-4) , (9-2) , (3-9) </p>
+<p><strong>ATTENTION</strong> : l'ensemble (1-8) ne constitue pas une seule poutre 
+  (message d'erreur :<font color="#FF0000"><strong> <u>LA STRUCTURE EST EN PLUSIEURS 
+  MOR&Ccedil;EAUX</u></strong></font>) mais 5 poutres : (1-2) , (2-6) , (6-5) 
+  , (5-7) , (7-8).</p>
+<p>On appelle nombre de degr&eacute;s de libert&eacute; d'une poutre le nombre 
+  de param&egrave;tres n&eacute;cessaires pour d&eacute;finir les d&eacute;placements 
+  des n&#339;uds de la poutre.</p>
+<p><strong><font color="#008040">Rep&egrave;re local li&eacute; &agrave; un poutre</font></strong> 
+  :</p>
+<ul>
+  <li>poutre (9-2) : {9;X1,Y1,Z1}</li>
+  <li>poutre (2-6) : {2;X2,Y2,Z2}</li>
+</ul>
+<p><font color="#FF0000" size="5"><strong>Liaisons int&eacute;rieures (relaxations) :</strong></font></p>
+<ul>
+  <li> Les poutres (1-2) et (2-6) sont reli&eacute;es au n&#339;ud 2 de mani&egrave;re 
+    rigide.</li>
+  <li> Les poutres (9-2) et (3-9) sont reli&eacute;es au n&#339;ud 9 de mani&egrave;re 
+    rigide.</li>
+  <li> Le n&#339;ud 5 est pour la poutre (5-4) une rotule. Une liaison int&eacute;rieure 
+    par rotule ne transmet pas les couples (relaxation).</li>
+</ul>
+
+<p><font color="#FF0000" size="5"><strong>Liaisons de la structure avec l'ext&eacute;rieur :</strong></font></p>
+<p> L'ossature est li&eacute;e &agrave; l'ext&eacute;rieur par :</p>
+<ul>
+  <li> un <strong>appui simple</strong> au n&#339;ud 7 : l'action de liaison se 
+    r&eacute;duit &agrave; une force perpendiculaire au plan d'appui.</li>
+  <li> une <strong>rotule</strong> aux n&#339;uds 1 et 4 : l'action de liaison 
+    se r&eacute;duit &agrave; une force passant par le centre de la rotule.</li>
+  <li> un <strong>encastrement</strong> au n&#339;ud 3 : l'action de liaison est 
+    compos&eacute;e d'une force et d'un couple.<br>
+  </li>
+</ul>
+
+<p><font color="#FF0000" size="5"><strong>Charges :</strong></font></p>
+<ul>
+  <li> Le n&#339;ud 9 porte une charge nodale.</li>
+  <li> La poutre (5-7) porte une charge ponctuelle en trav&eacute;e.</li>
+  <li> La poutre (2-6) porte une charge r&eacute;partie.</li>
+  <li> ...</li>
+</ul>
+<p></p>
+</body>
+</html>
